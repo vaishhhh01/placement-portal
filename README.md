@@ -2,7 +2,7 @@
 
 ## Running Locally
     pip install -r requirements.txt
-    python seed.py 
+    python seed.py #sample database population
     python app.py
 
 ## Demo logins
@@ -14,7 +14,7 @@
 | Company (approved) | hr@techcorp.com | company123 |
 | Company (pending) | hr@newstartup.com | company123 |
 
-##Stack
+## Stack
 Python + Stack
 SQLite Database
 SQLAlchemy
