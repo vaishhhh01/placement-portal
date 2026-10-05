@@ -2,8 +2,8 @@
 
 ## How to run it?
     pip install -r requirements.txt
-    python seed.py      # creates instance/database.db with sample data
-    python app.py       # open http://127.0.0.1:5000
+    python seed.py
+    python app.py
 
 ## Demo logins
 | Role | Email | Password |
