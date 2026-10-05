@@ -5,6 +5,8 @@
     python seed.py #sample database population
     python app.py
 
+http://localhost:5000 to access locally
+
 ## Demo logins
 | Role | Email | Password |
 |---|---|---|
