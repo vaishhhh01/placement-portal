@@ -1,0 +1,55 @@
+{% extends "base.html" %}{% block content %}
+<div class="panel">
+  <div class="dash-toolbar" style="justify-content:space-between">
+    <div>
+      <p class="dashboard-kicker"><span class="live-dot" aria-hidden="true"></span> LIVE RECRUITMENT DASHBOARD</p>
+      <h1>Admin</h1>
+      <p class="muted">Review approvals and maintain a complete recruitment record.</p>
+    </div>
+    <a class="ghost-btn" href="/logout">Logout</a>
+  </div>
+</div>
+<div id="note" class="note" role="status" aria-live="polite"></div>
+<section class="panel dashboard-sections" aria-label="Administration">
+  <div class="section-tabs section-tabs--three" data-tabs role="tablist" aria-label="Administration sections">
+    <button class="section-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="companies-panel" data-tab="companies-panel">Companies</button>
+    <button class="section-tab" type="button" role="tab" aria-selected="false" aria-controls="jobs-panel" data-tab="jobs-panel">Jobs</button>
+    <button class="section-tab" type="button" role="tab" aria-selected="false" aria-controls="audit-log" data-tab="audit-log">Audit log</button>
+    <button class="section-tab" type="button" role="tab" aria-selected="false" aria-controls="directory" data-tab="directory">Directory</button>
+  </div>
+  <div class="tab-panel is-active" id="companies-panel" role="tabpanel">
+    <h2>Pending companies</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Company</th><th>Description</th><th>Reason (for reject)</th><th>Action</th></tr></thead>
+      <tbody id="companies"></tbody>
+    </table></div>
+  </div>
+  <div class="tab-panel" id="jobs-panel" role="tabpanel" hidden>
+    <h2>Pending jobs</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Title</th><th>Company</th><th>Min CGPA</th><th>Grad year</th><th>Branches</th><th>Reason (for reject)</th><th>Action</th></tr></thead>
+      <tbody id="jobs"></tbody>
+    </table></div>
+  </div>
+  <div class="tab-panel" id="audit-log" role="tabpanel" hidden>
+    <h2>Audit log</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Timestamp</th><th>Admin ID</th><th>Action</th><th>Target</th><th>Reason</th></tr></thead>
+      <tbody id="logs"></tbody>
+    </table></div>
+  </div>
+  <div class="tab-panel" id="directory" role="tabpanel" hidden>
+    <h2>Registered companies</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Company</th><th>Email</th><th>Account status</th><th>Hiring status</th></tr></thead>
+      <tbody id="directoryCompanies"></tbody>
+    </table></div>
+    <h2 class="directory-heading">Registered students</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Name</th><th>Email</th><th>Branch</th><th>Status</th></tr></thead>
+      <tbody id="directoryStudents"></tbody>
+    </table></div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/admin.js"></script>{% endblock %}

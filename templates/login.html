@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block mainclass %}login-main{% endblock %}
+{% block content %}
+<section class="login-card" aria-label="Login panel">
+  <h1>{{ page|capitalize }} login</h1>
+  <p id="note" class="note" hidden></p>
+  <form id="loginForm">
+    <label for="email">Email
+      <input id="email" type="email" autocomplete="email" required>
+    </label>
+    <label for="pw">Password
+      <input id="pw" type="password" autocomplete="current-password" required>
+    </label>
+    <button id="go" class="btn-signin" type="submit">Sign in</button>
+  </form>
+  <p class="hint">Just exploring? Fill in the {{ page }} demo account.</p>
+  <button id="demo" class="demo-fill" type="button">Use {{ page }} demo account</button>
+  <div><a class="back-home" href="/">Back to home</a></div>
+</section>
+{% endblock %}
+{% block scripts %}<script>
+const PAGE = {{ page|tojson }}, DEMO = {{ demo|tojson }};
+$("#demo").onclick = () => { $("#email").value = DEMO[0]; $("#pw").value = DEMO[1]; };
+async function signIn() {
+  const r = await api("/api/login", { page: PAGE, email: $("#email").value, password: $("#pw").value });
+  r.ok ? location.href = r.redirect : note(r.message, false);
+}
+$("#loginForm").addEventListener("submit", e => { e.preventDefault(); signIn(); });
+</script>{% endblock %}

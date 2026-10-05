@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+  {% block bg %}{% endblock %}
+  <main class="{% block mainclass %}dash-main{% endblock %}">{% block content %}{% endblock %}</main>
+  <div class="result-modal" id="savedModal" hidden>
+    <div class="result-dialog" role="dialog" aria-modal="true" aria-labelledby="savedModalTitle">
+      <div class="result-mark result-mark--check" aria-hidden="true"></div>
+      <h2 id="savedModalTitle">Changes saved</h2>
+      <p id="savedModalMessage">Your changes were saved successfully.</p>
+      <button id="closeSavedModal" type="button" class="primary-action">OK</button>
+    </div>
+  </div>
+  <script src="/static/api.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

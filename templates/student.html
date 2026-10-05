@@ -1,0 +1,55 @@
+{% extends "base.html" %}{% block content %}
+<div class="panel">
+  <div class="dash-toolbar" style="justify-content:space-between">
+    <div>
+      <p class="dashboard-kicker"><span class="live-dot" aria-hidden="true"></span> LIVE RECRUITMENT DASHBOARD</p>
+      <h1>Student</h1>
+      <p class="muted">Stay on top of the opportunities that matter to you.</p>
+    </div>
+    <a class="ghost-btn" href="/logout">Logout</a>
+  </div>
+</div>
+<div id="note" class="note" role="status" aria-live="polite"></div>
+<div class="panel">
+  <h2>Your profile</h2>
+  <p class="profile-name" id="pname">Loading your details…</p>
+  <div class="profile-fields">
+    <label>Branch<input id="branch" disabled></label>
+    <label>CGPA<input id="cgpa" disabled></label>
+    <label>Graduation year<input id="year" disabled></label>
+    <label>Resume URL<input id="resume"></label>
+  </div>
+  <button id="saveProfile" type="button" class="primary-action">Save profile</button>
+</div>
+<section class="panel dashboard-sections" aria-label="Student opportunities">
+  <div class="section-tabs" data-tabs role="tablist" aria-label="Student opportunities">
+    <button class="section-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="open-jobs" data-tab="open-jobs">Open jobs</button>
+    <button class="section-tab" type="button" role="tab" aria-selected="false" aria-controls="application-progress" data-tab="application-progress">Application progress</button>
+  </div>
+  <div class="tab-panel is-active" id="open-jobs" role="tabpanel">
+    <h2>Open jobs</h2>
+    <p class="muted">Explore roles matched to your academic profile.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Title</th><th>Company</th><th>Min CGPA</th><th>Grad year</th><th>Branches</th><th>Action</th></tr></thead>
+      <tbody id="jobs"></tbody>
+    </table></div>
+  </div>
+  <div class="tab-panel" id="application-progress" role="tabpanel" hidden>
+    <h2>Application progress</h2>
+    <p class="muted">Track each application from submission through decision.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Job</th><th>Status</th><th>Last change</th></tr></thead>
+      <tbody id="apps"></tbody>
+    </table></div>
+  </div>
+</section>
+<div class="result-modal" id="applicationModal" hidden>
+  <div class="result-dialog" role="dialog" aria-modal="true" aria-labelledby="applicationModalTitle">
+    <div class="result-mark result-mark--cross" aria-hidden="true"></div>
+    <h2 id="applicationModalTitle">Application unavailable</h2>
+    <p id="applicationModalMessage"></p>
+    <button id="closeApplicationModal" type="button" class="primary-action">Continue</button>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="/static/student.js"></script>{% endblock %}

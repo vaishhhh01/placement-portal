@@ -1,0 +1,79 @@
+{% extends "base.html" %}{% block content %}
+<div class="panel">
+  <div class="dash-toolbar" style="justify-content:space-between">
+    <div>
+      <p class="dashboard-kicker"><span class="live-dot" aria-hidden="true"></span> LIVE RECRUITMENT DASHBOARD</p>
+      <h1>Company</h1>
+      <p class="muted">Build your talent pipeline with clarity and control.</p>
+    </div>
+    <a class="ghost-btn" href="/logout">Logout</a>
+  </div>
+</div>
+<div id="note" class="note" role="status" aria-live="polite"></div>
+<div class="panel">
+  <h2 id="cname">Company details</h2>
+  <label>Company description<textarea id="desc" rows="2"></textarea></label>
+  <button id="saveCompany" type="button" class="primary-action">Save details</button>
+</div>
+<section class="panel dashboard-sections" aria-label="Company recruitment management">
+  <div class="section-tabs" data-tabs role="tablist" aria-label="Company recruitment sections">
+    <button class="section-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="post-job" data-tab="post-job">Post job</button>
+    <button class="section-tab" type="button" role="tab" aria-selected="false" aria-controls="my-jobs" data-tab="my-jobs">My jobs</button>
+    <button class="section-tab" type="button" role="tab" aria-selected="false" aria-controls="applicants" data-tab="applicants">Applicants</button>
+    <button class="section-tab" type="button" role="tab" aria-selected="false" aria-controls="close-hiring" data-tab="close-hiring">Close hiring</button>
+  </div>
+  <div class="tab-panel is-active" id="post-job" role="tabpanel">
+    <h2>Post a job</h2>
+    <div class="field-grid">
+      <label>Title<input id="title"></label>
+      <label>Min CGPA (0-10)<input id="mincgpa" type="number" step="0.1" min="0" max="10"></label>
+      <label>Allowed graduation year (optional)<input id="gradyear" type="number"></label>
+      <label style="grid-column:1 / -1">Description<textarea id="jdesc" rows="2"></textarea></label>
+      <label style="grid-column:1 / -1">Allowed branches (comma separated)<input id="branches" placeholder="CSE, IT"></label>
+    </div>
+    <button id="postJob" type="button" class="primary-action">Create pending job</button>
+  </div>
+  <div class="tab-panel" id="my-jobs" role="tabpanel" hidden>
+    <h2>My jobs</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Title</th><th>Status</th></tr></thead>
+      <tbody id="jobs"></tbody>
+    </table></div>
+  </div>
+  <div class="tab-panel" id="applicants" role="tabpanel" hidden>
+    <h2>Applicants</h2>
+    <div class="dash-toolbar">
+      <label style="flex:1 1 220px">Search<input id="search" placeholder="Search student or job"></label>
+      <label>Batch status
+        <select id="newStatus">
+          <option>SHORTLISTED</option><option>INTERVIEWED</option><option>HIRED</option><option>REJECTED</option><option>APPLIED</option>
+        </select>
+      </label>
+      <button id="updBtn" type="button">Update selected (0)</button>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Select</th><th>Student</th><th>Job</th><th>CGPA</th><th>Status</th><th>Last change</th></tr></thead>
+      <tbody id="apps"></tbody>
+    </table></div>
+  </div>
+  <div class="tab-panel" id="close-hiring" role="tabpanel" hidden>
+    <h2>Close hiring</h2>
+    <p class="muted">Close a job once you are no longer accepting new applications. It will remain visible in My jobs as CLOSED.</p>
+    <label class="close-job-select" for="closeJob">Select a job
+      <select id="closeJob"></select>
+    </label>
+    <button id="startCloseHiring" type="button" class="primary-action">Continue</button>
+  </div>
+</section>
+<div class="result-modal" id="closeHiringModal" hidden>
+  <div class="result-dialog" role="dialog" aria-modal="true" aria-labelledby="closeHiringTitle">
+    <h2 id="closeHiringTitle">Close this hiring campaign?</h2>
+    <p id="closeHiringMessage">New student applications will no longer be accepted.</p>
+    <div class="modal-actions">
+      <button id="cancelCloseHiring" type="button">Cancel</button>
+      <button id="confirmCloseHiring" type="button" class="primary-action">Continue</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="/static/company.js"></script>{% endblock %}

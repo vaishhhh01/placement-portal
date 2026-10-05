@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block bodyclass %}home-page{% endblock %}
+{% block mainclass %}home-main{% endblock %}
+{% block bg %}
+<canvas id="bg" data-trail="home" aria-hidden="true"></canvas>
+{% endblock %}
+{% block content %}
+<section class="home-hero" aria-labelledby="home-title">
+  <p class="home-eyebrow">Campus recruitment portal</p>
+  <h1 id="home-title">Introducing Alley.</h1>
+  <p class="home-tagline">The Intelligent Engine for Campus Recruitment. Reimagined.</p>
+  <p class="home-signin-copy">Sign in to access your personalised recruitment workspace.</p>
+  <nav class="home-actions" aria-label="Choose a sign-in portal">
+    <a class="home-pill" href="/login/student">Student</a>
+    <a class="home-pill" href="/login/company">Company</a>
+    <a class="home-pill" href="/login/admin">Admin</a>
+  </nav>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/bg.js"></script>{% endblock %}
