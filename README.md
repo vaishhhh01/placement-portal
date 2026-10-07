@@ -16,11 +16,11 @@ https://placement-portal0.vercel.app/ - website link
 | Company (pending) | hr@newstartup.com | company123 |
 
 ## Stack
-Python + Stack
-SQLite Database
-SQLAlchemy
-CSS + JavaScript
-Tools: Framer
+- Python + Stack
+- SQLite Database
+- SQLAlchemy
+- CSS + JavaScript
+- Tools: Framer
 
 ## Deploying
 
