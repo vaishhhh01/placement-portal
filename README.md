@@ -4,9 +4,8 @@
     pip install -r requirements.txt
     python seed.py #sample database population
     python app.py
-
-http://localhost:5000 to access locally
-
+  
+https://placement-portal0.vercel.app/ - website link
 ## Demo logins
 | Role | Email | Password |
 |---|---|---|
